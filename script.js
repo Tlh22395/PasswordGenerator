@@ -23,20 +23,6 @@ function passwordQuestion() {
   //alert after each 
 }
 
-// // Assignment Code
-// var generateBtn = document.querySelector("#generate");
-
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;
-
-// }
-
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
 // var testq = prompt("whats your favorite color?")
 
 // possible paassword values
@@ -45,40 +31,43 @@ var lowercase = "abcdefghijklmnopqrstuvwxyz";
 var numbers = "1234567890";
 var symbols = "!@#$%^&*()_+";
 
-// add password to textbox
-function getPassword() {
-    var getPassword = document.getElementById("password")
-    getPassword.innerHTML = " ";
-    var display = document.createElement("display");
-    display.textContent = generatePassword();
-    getPassword.appendChild(display); 
+//values to store password
+var letters = "";
+var password = "";
+var createPassword = "";
 
+//prompts for creating password
+var up = confirm("Uppercase?");
+var low = confirm("Lowercase?");
+var symb = confirm("Symbols?");
+var num = confirm("Numbers?");
+
+// if statements for password type
+if (up) {
+letters += uppercase;
+createPassword += getRandomCharacters(uppercase);
 }
 
-function writePassword(){
- // which checked attributes are allowed
-  var allowed = " ";
-  if(document.generated.uppercase.checked) {
-    allowed += uppercase;
-  }
-  if(document.generated.lowercase.checked) {
-    allowed += lowercase;
-  }
-  if(document.generated.numbers.checked) {
-    allowed += numbers;
-  }
-  if(document.generated.symbols.checked) {
-    allowed += symbols;
-  }
-
-  // add password thats generated
-  var password = " ";
-  var length = parseInt(document.generated.length.value);
-  for(var i = 0; i < length; i++) {
-    var random = Math.floor(Math.random() * allowed.length);
-    password += allowed[random];
-  }
-
-  return password;
-
+if (low) {
+  letters += lowercase;
+  createPassword += getRandomCharacters(lowercase);
 }
+
+if (num) {
+  letters += numbers;
+  createPassword += getRandomCharacters(numbers);
+}
+
+if (symb) {
+  letters += symbols;
+  createPassword += getRandomCharacters(symbols);
+}
+
+password += createPassword;
+
+for(var i = 0; i < length - letters.length; i++) {
+  var randomPassword = getRandomint(characters.length);
+  password += characters.charAt(randomPassword);
+}
+
+// function for writing password
