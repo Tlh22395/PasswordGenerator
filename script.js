@@ -33,7 +33,7 @@ var symbols = "!@#$%^&*()_+";
 
 //values to store password
 var letters = "";
-var password = "";
+var displayPassword = "";
 var createPassword = "";
 
 //prompts for creating password
@@ -63,11 +63,21 @@ if (symb) {
   createPassword += getRandomCharacters(symbols);
 }
 
-password += createPassword;
+displayPassword += createPassword;
 
 for(var i = 0; i < length - letters.length; i++) {
   var randomPassword = getRandomint(characters.length);
-  password += characters.charAt(randomPassword);
+  displayPassword += characters.charAt(randomPassword);
 }
 
 // function for writing password
+function writePassword() {
+  var password = generatePassword();
+  var textPassword = document.querySelector("#password");
+
+  if (password !== undefined) {
+    textPassword.value = password;
+  }
+}
+
+
