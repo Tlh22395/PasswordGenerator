@@ -1,5 +1,4 @@
 // create password questions function
-passwordQuestion();
 
 function passwordQuestion() {
   //prompt for password length
@@ -17,13 +16,13 @@ function passwordQuestion() {
     return;
   }
 
+  var generateBtn = document.querySelector("#generate");
+
   //alert with answer
   
   //confirms for true or false questions
   //alert after each 
 }
-
-// var testq = prompt("whats your favorite color?")
 
 // possible paassword values
 var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -74,10 +73,13 @@ for(var i = 0; i < length - letters.length; i++) {
 function writePassword() {
   var password = generatePassword();
   var textPassword = document.querySelector("#password");
+  textPassword.value = password;
 
   if (password !== undefined) {
     textPassword.value = password;
   }
 }
+
+generateBtn.addEventListener("click", passwordQuestion);
 
 
