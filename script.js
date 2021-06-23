@@ -4,15 +4,6 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function generatePassword() {
 
-  var passwordLength = prompt("How long do you want your password? Please choose between 8-128");
-  if (passwordLength >= 8 && passwordLength <=128){
-     alert("You chose a password length of " + passwordLength);
-  }
-  else{
-     alert("You did not choose a correct password length!");
-     return;
-  }
-
   alert("Please choose in the following prompts what features you would like on your password");
    
   var lowerCase = confirm("Do you want lower case letters in your password?");
@@ -24,6 +15,15 @@ function generatePassword() {
     alert("You didn't choose any correct characters");
      return;
   }
+  var passwordLength = prompt("How long do you want your password? Please choose between 8-128");
+    if (passwordLength >= 8 && passwordLength <=128){
+      alert("You chose a password length of " + passwordLength);
+    }
+    else{
+      alert("You did not choose a correct password length!");
+      return;
+    } 
+  
   var tempPassword = "";
   var realPassword = ""; // for loop used later to create string of random password
   var lowerCaseString = "abcdefghigklmnopqrstuvwxyz";
@@ -49,15 +49,15 @@ function generatePassword() {
     realPassword += tempPassword.charAt(randomChar);
   } // for loop end
 
-  return (realPassword);
+  return realPassword;
 
 } //Function closed bracket
 
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
-}
+// function writePassword() {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector("#displayPassword");
+//   passwordText.value = password;
+// }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword); 
+generateBtn.addEventListener("click", generatePassword); 
